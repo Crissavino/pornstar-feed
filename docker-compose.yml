@@ -2,7 +2,7 @@ version: '3'
 services:
 
     #PHP Service
-    virta_app:
+    mindgeektest_app:
         build:
             context: .
             dockerfile: Dockerfile
@@ -69,6 +69,10 @@ services:
     redis:
         image: redis:alpine
         container_name: redis
+        depends_on:
+            - mindgeektest_db
+            - mindgeektest_webserver
+            - mindgeektest_app
         volumes:
             - ./docker/redis:/data
         ports:
