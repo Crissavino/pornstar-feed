@@ -7,8 +7,7 @@ echo "This script will build, start the docker containers, run composer install,
 cp .env.example .env
 
 # Build the docker images
-#docker compose build --no-cache
-docker compose build
+docker compose build --no-cache
 
 # Initialize the containers
 docker compose up -d
