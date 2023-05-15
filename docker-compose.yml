@@ -1,0 +1,92 @@
+version: '3'
+services:
+
+    #PHP Service
+    virta_app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        depends_on:
+            - pornstar_feed_db
+            - pornstar_feed_webserver
+        image: pornstar_feed_app
+        container_name: pornstar_feed_app
+        restart: unless-stopped
+        tty: true
+        environment:
+            - SERVICE_NAME=pornstar_feed_app
+            - SERVICE_TAGS=dev
+            - DB_HOST=pornstar_feed_db
+            - DB_PORT=3306
+            - DB_DATABASE=pornstar_feed
+            - DB_USERNAME=root
+            - DB_PASSWORD=root
+            - CACHE_DRIVER=redis
+            - REDIS_HOST=redis
+            - REDIS_PASSWORD=null
+            - REDIS_PORT=6379
+            - QUEUE_CONNECTION=database
+        working_dir: /var/www/html/
+        volumes:
+            - ./:/var/www/html/
+            - ./docker/php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
+        networks:
+            - app-network
+
+    #Nginx Service
+    pornstar_feed_webserver:
+        image: nginx:alpine
+        container_name: pornstar_feed_webserver
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./:/var/www/html/
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+        networks:
+            - app-network
+
+    #MySQL Service
+    pornstar_feed_db:
+        image: mysql:5.7.34
+        container_name: pornstar_feed_db
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_DATABASE=pornstar_feed
+            - MYSQL_PASSWORD=root
+            - MYSQL_ROOT_PASSWORD=root
+        volumes:
+            - ./docker/mysql/db_data:/var/lib/mysql/
+            - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+        networks:
+            - app-network
+
+    redis:
+        image: redis:alpine
+        container_name: redis
+        volumes:
+            - ./docker/redis:/data
+        ports:
+            - "6382:6379"
+        environment:
+            - CACHE_DRIVER=redis
+            - REDIS_HOST=redis
+            - REDIS_PASSWORD=null
+            - REDIS_PORT=6379
+            - QUEUE_CONNECTION=database
+        networks:
+            - app-network
+
+#Docker Networks
+networks:
+    app-network:
+        driver: bridge
+#Volumes
+volumes:
+    db_data:
+        driver: local

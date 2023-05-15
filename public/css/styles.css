@@ -1,0 +1,194 @@
+:root {
+    --primary-color: #ff9100 !important;
+}
+
+.black-background {
+    background-color: #000000 !important;
+}
+
+body {
+    font-family: Arial,Helvetica,sans-serif !important;
+}
+
+.card {
+    background: #000000;
+}
+
+.card-body {
+    background: linear-gradient(to bottom,#1c1c1c 0,#000 100%);
+}
+
+.change-pornstar-arrows {
+}
+
+.change-pornstar-arrows .arrow-left {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    background-color: #333;
+
+    cursor: pointer;
+}
+
+.change-pornstar-arrows .arrow-left span {
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -5px;
+    margin-top: -10px;
+}
+
+.change-pornstar-arrows .arrow-right {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    background-color: #333;
+
+    cursor: pointer;
+}
+
+.change-pornstar-arrows .arrow-right span {
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -5px;
+    margin-top: -10px;
+}
+
+.pornstar-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.pornstar-header .pornstar-img-name {
+    display: flex;
+    align-items: flex-end;
+}
+
+.pornstar-header .pornstar-img-name .pornstar-name {
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+}
+
+.pornstar-header .pornstar-img-name .pornstar-name h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.pornstar-header .pornstar-img-name .pornstar-name img{
+    margin-left: 12px;
+}
+
+.pornstar-header .pornstar-header-info {
+    display: flex;
+}
+
+.pornstar-header .pornstar-header-info .info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+    width: 120px;
+}
+
+.pornstar-header .pornstar-header-info .info-item .info-item-value {
+    font-size: 24px;
+}
+
+.pornstar-header .pornstar-header-info .info-item .info-item-label {
+    font-size: 12px;
+}
+
+.pornstar-body {
+    background: linear-gradient(to bottom,#1c1c1c 0,#000 100%);
+}
+
+.pornstar-body .info-item {
+    display: flex;
+    justify-content: center;
+}
+
+.pornstar-body .info-item .info-item-label {
+    font-size: 12px;
+    color: #d4d4d4;
+    font-weight: 700;
+}
+
+.pornstar-body .info-item .info-item-value {
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+.pagination
+{
+    --bs-pagination-color: #f8f9fa !important;
+    --bs-pagination-bg: var(--primary-color) !important;
+    --bs-pagination-hover-color: #000000 !important;
+    --bs-pagination-hover-bg: #f8f9fa !important;
+    /*--bs-pagination-focus-bg: var(--bs-secondary-bg);*/
+    --bs-pagination-active-color: #f8f9fa !important;
+    --bs-pagination-active-bg: #985A08FF !important;
+    --bs-pagination-active-border-color: #985A08FF !important;
+    --bs-pagination-disabled-color: #f8f9fa !important;
+    --bs-pagination-disabled-bg: var(--primary-color) !important;
+    --bs-pagination-disabled-border-color: var(--primary-color) !important;
+    --bs-pagination-border-color: var(--primary-color) !important;
+}
+
+@media screen and (max-width: 1400px) {
+    .porn-hub-link-button {
+        margin-bottom: 12px;
+    }
+}
+
+
+@media screen and (max-width: 991px) {
+    .pornstar-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pornstar-header .pornstar-img-name {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pornstar-header .pornstar-img-name .pornstar-name {
+        margin-left: 0;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .porn-hub-link-button {
+        margin-bottom: 0;
+    }
+}
