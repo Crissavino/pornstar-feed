@@ -5,7 +5,8 @@
 /storage/*.key
 /vendor
 /docker/mysql/db_data/*
-/docker/redis/*
+/docker/cron/cron_log.log
+worker.log
 .env
 .env.backup
 .env.production
