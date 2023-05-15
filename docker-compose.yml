@@ -2,23 +2,23 @@ version: '3'
 services:
 
     #PHP Service
-    mindgeektest_app:
+    pornstar_app:
         build:
             context: .
             dockerfile: Dockerfile
         depends_on:
-            - mindgeektest_db
-            - mindgeektest_webserver
-        image: mindgeektest_app
-        container_name: mindgeektest_app
+            - pornstar_feed_db
+            - pornstar_feed_webserver
+        image: pornstar_feed_app
+        container_name: pornstar_feed_app
         restart: unless-stopped
         tty: true
         environment:
-            - SERVICE_NAME=mindgeektest_app
+            - SERVICE_NAME=pornstar_feed_app
             - SERVICE_TAGS=dev
-            - DB_HOST=mindgeektest_db
+            - DB_HOST=pornstar_feed_db
             - DB_PORT=3306
-            - DB_DATABASE=mindgeektest
+            - DB_DATABASE=pornstar_feed
             - DB_USERNAME=root
             - DB_PASSWORD=root
             - CACHE_DRIVER=redis
@@ -34,9 +34,9 @@ services:
             - app-network
 
     #Nginx Service
-    mindgeektest_webserver:
+    pornstar_feed_webserver:
         image: nginx:alpine
-        container_name: mindgeektest_webserver
+        container_name: pornstar_feed_webserver
         restart: unless-stopped
         tty: true
         ports:
@@ -49,15 +49,15 @@ services:
             - app-network
 
     #MySQL Service
-    mindgeektest_db:
+    pornstar_feed_db:
         image: mysql:5.7.34
-        container_name: mindgeektest_db
+        container_name: pornstar_feed_db
         restart: unless-stopped
         tty: true
         ports:
             - "3306:3306"
         environment:
-            - MYSQL_DATABASE=mindgeektest
+            - MYSQL_DATABASE=pornstar_feed
             - MYSQL_PASSWORD=root
             - MYSQL_ROOT_PASSWORD=root
         volumes:
@@ -69,10 +69,6 @@ services:
     redis:
         image: redis:alpine
         container_name: redis
-        depends_on:
-            - mindgeektest_db
-            - mindgeektest_webserver
-            - mindgeektest_app
         volumes:
             - ./docker/redis:/data
         ports:
