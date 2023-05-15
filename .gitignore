@@ -4,7 +4,8 @@
 /public/storage
 /storage/*.key
 /vendor
-/docker
+/docker/mysql/db_data/*
+/docker/redis/*
 .env
 .env.backup
 .env.production
