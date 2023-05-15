@@ -4,7 +4,6 @@
 /public/storage
 /storage/*.key
 /vendor
-/docker/mysql/db_data/*
 /docker/cron/cron_log.log
 worker.log
 .env
