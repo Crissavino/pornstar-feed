@@ -7,18 +7,18 @@ services:
             context: .
             dockerfile: Dockerfile
         depends_on:
-            - pornstar_feed_db
-            - pornstar_feed_webserver
-        image: pornstar_feed_app
-        container_name: pornstar_feed_app
+            - mindgeektest_db
+            - mindgeektest_webserver
+        image: mindgeektest_app
+        container_name: mindgeektest_app
         restart: unless-stopped
         tty: true
         environment:
-            - SERVICE_NAME=pornstar_feed_app
+            - SERVICE_NAME=mindgeektest_app
             - SERVICE_TAGS=dev
-            - DB_HOST=pornstar_feed_db
+            - DB_HOST=mindgeektest_db
             - DB_PORT=3306
-            - DB_DATABASE=pornstar_feed
+            - DB_DATABASE=mindgeektest
             - DB_USERNAME=root
             - DB_PASSWORD=root
             - CACHE_DRIVER=redis
@@ -34,9 +34,9 @@ services:
             - app-network
 
     #Nginx Service
-    pornstar_feed_webserver:
+    mindgeektest_webserver:
         image: nginx:alpine
-        container_name: pornstar_feed_webserver
+        container_name: mindgeektest_webserver
         restart: unless-stopped
         tty: true
         ports:
@@ -49,15 +49,15 @@ services:
             - app-network
 
     #MySQL Service
-    pornstar_feed_db:
+    mindgeektest_db:
         image: mysql:5.7.34
-        container_name: pornstar_feed_db
+        container_name: mindgeektest_db
         restart: unless-stopped
         tty: true
         ports:
             - "3306:3306"
         environment:
-            - MYSQL_DATABASE=pornstar_feed
+            - MYSQL_DATABASE=mindgeektest
             - MYSQL_PASSWORD=root
             - MYSQL_ROOT_PASSWORD=root
         volumes:
